@@ -1,0 +1,19 @@
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+li {
+  list-style: none;
+}
