@@ -4,7 +4,8 @@ import newGallery from './fetchGallery';
 import galleryTemplate from './templates/galleryCards.hbs';
 
 const refs = {
-  searchForm: document.querySelector('#search-form input'),
+  searchQuery: document.querySelector('.search-form-btn'),
+  searchValue: document.querySelector('#search-form input'),
   gallery: document.querySelector('.gallery'),
   buttonLoad: document.querySelector('.btn-load'),
   buttonUp: document.querySelector('.btn-up'),
@@ -13,23 +14,22 @@ const refs = {
 refs.buttonLoad.disabled = true;
 refs.buttonUp.disabled = true;
 
-refs.searchForm.addEventListener(
-  'input',
-  debounce(searchFormInputListener, 800),
-);
+refs.searchQuery.addEventListener('click', searchImage);
 
-function searchFormInputListener() {
+function searchImage(e) {
+  e.preventDefault();
   newGallery.resetPage();
   clearGallery();
   refs.buttonLoad.disabled = true;
   refs.buttonUp.disabled = true;
 
-  const searchQuery = refs.searchForm.value;
-  newGallery.query = searchQuery;
+  const query = refs.searchValue.value;
+  newGallery.query = query;
 
-  if (searchQuery) {
+  if (query) {
     refs.buttonLoad.disabled = false;
     refs.buttonUp.disabled = false;
+
     newGallery.fetchGallery().then(hits => {
       const markup = buildListGallery(hits);
       insertListGallery(markup);
@@ -45,6 +45,11 @@ function buildListGallery(items) {
 }
 function insertListGallery(items) {
   refs.gallery.insertAdjacentHTML('beforeend', items);
+  refs.buttonLoad.style.display = 'block';
+  refs.buttonUp.style.cssText = `display: block; position: fixed;
+  bottom: 10px;
+  right: 50px;
+  border-radius: 50px`;
 }
 function loadMore() {
   newGallery.fetchGallery().then(hits => {

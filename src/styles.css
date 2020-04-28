@@ -17,3 +17,23 @@ ul {
 li {
   list-style: none;
 }
+.btn-load{
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  border: 1px solid lightgreen;
+  background-color: lightyellow;
+}
+.btn-up, .btn-load{
+  display: none;
+}
+.btn-up{
+  display: none;
+  width: 50px;
+  height: 50px;
+  border: 1px solid lightyellow;
+  background-color: lightgreen; 
+}
+.btn-up:focus{
+  outline-color: rgba(255, 255, 255, 0);
+}
