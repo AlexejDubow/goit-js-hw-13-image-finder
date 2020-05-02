@@ -1,7 +1,6 @@
+@import "~basiclightbox/dist/basiclightbox.min.css";
 html {
   box-sizing: border-box;
-  width: 100vw;
-  overflow-x: hidden;
 }
 
 *,
@@ -17,6 +16,9 @@ ul {
 li {
   list-style: none;
 }
+.photo-card{
+  padding-bottom: 20px;
+}
 .btn-load{
   margin: 0 auto;
   margin-bottom: 10px;
@@ -24,16 +26,21 @@ li {
   border: 1px solid lightgreen;
   background-color: lightyellow;
 }
-.btn-up, .btn-load{
+.btn-up, .btn-load, .btn-down{
   display: none;
 }
-.btn-up{
+.btn-up, .btn-down{
   display: none;
   width: 50px;
   height: 50px;
   border: 1px solid lightyellow;
   background-color: lightgreen; 
 }
-.btn-up:focus{
+.btn-up:focus, 
+.btn-down:focus{
   outline-color: rgba(255, 255, 255, 0);
 }
+.material-icons.orange { color: #FB8C00; }
+.material-icons.gold { color: rgb(220, 223, 47); }
+.material-icons.green { color: rgb(115, 218, 55); }
+.material-icons.blue { color: rgb(29, 81, 177); }
